@@ -1,9 +1,14 @@
+import 'dart:convert';
+import 'package:http/http.dart';
+import 'package:flutter/widgets.dart';
 import 'package:get/get.dart';
+import 'package:my_movies_app/data/utils/api_manager.dart';
 import 'package:my_movies_app/data/utils/connectivityplus.dart';
 import 'package:my_movies_app/data/utils/databaseheiper.dart';
 import 'package:my_movies_app/data/utils/moviesyncservice.dart';
 import 'package:my_movies_app/module/main_module/homeMovie/model/homeMovieResponseModel.dart';
 import 'package:my_movies_app/module/main_module/homeMovie/service/home_service.dart';
+import 'package:http/http.dart' as http;
 
 class HomeController extends GetxController {
   late HomeServiceProvider homeServiceProvider = Get.put(HomeServiceProvider());
@@ -13,24 +18,57 @@ class HomeController extends GetxController {
   /// Getter for favorite movies
   RxList<MoviesResponseModel> get favoriteMovies =>
       movieList.where((movie) => movie.isFavorite.value).toList().obs;
+  final searchController = TextEditingController();
 
   @override
   void onInit() {
     super.onInit();
     callApi();
     fetchMovies();
+  }
 
+  /// search api call
+  searchProduct(String searchText) async {
+    // authProvider.isProcess.value = true;
+
+    var response = await http.get(
+      Uri.parse('${ApiManager.movieUrl}'),
+    );
+
+    if (response.statusCode == 200) {
+      var jsonResponse = json.decode(response.body);
+
+      if (jsonResponse is List) {
+        // Assuming the response is a list of movies
+        List<MoviesResponseModel> allMovies = jsonResponse
+            .map((movieJson) => MoviesResponseModel.fromJson(movieJson))
+            .toList();
+
+        // Filter movies based on search text
+        List<MoviesResponseModel> filteredMovies = allMovies.where((movie) {
+          return movie.title!.toLowerCase().contains(searchText.toLowerCase());
+        }).toList();
+
+        // Update the movie list in the service provider
+        homeServiceProvider.movieList.assignAll(filteredMovies);
+      } else {
+        throw Exception(
+            'Unexpected response format: Expected a list of movies');
+      }
+    } else {
+      throw Exception('Failed to fetch movies: ${response.statusCode}');
+    }
   }
 
   /// Call API to fetch movies and update their favorite status
-callApi() async {
+  callApi() async {
+    // Fetch movies from the API
+    await homeServiceProvider.myMoviesGet();
+    // await homeServiceProvider.searchMovie()
 
-      // Fetch movies from the API
-      await homeServiceProvider.myMoviesGet();
-
-      // Sync favorites with the local database
-
+    // Sync favorites with the local database
   }
+
   // Fetch movies from the API or local database
   Future<void> fetchMovies() async {
     try {
@@ -38,12 +76,16 @@ callApi() async {
       if (isOnline) {
         // Fetch movies from the API and sync with local database
         List<MoviesResponseModel> apiMovies = await fetchMoviesFromApi();
-        await _movieSyncService.syncMovies(apiMovies);  // Save movies to the local database
+        await _movieSyncService
+            .syncMovies(apiMovies); // Save movies to the local database
         movieList.assignAll(apiMovies);
       } else {
         // Fetch movies from the local database if offline
-        List<Map<String, dynamic>> localMovies = await DatabaseHelper.getMovies();
-        movieList.assignAll(localMovies.map((movie) => MoviesResponseModel.fromJson(movie)).toList());
+        List<Map<String, dynamic>> localMovies =
+            await DatabaseHelper.getMovies();
+        movieList.assignAll(localMovies
+            .map((movie) => MoviesResponseModel.fromJson(movie))
+            .toList());
       }
     } catch (e) {
       print("Error fetching movies: $e");
@@ -66,6 +108,6 @@ callApi() async {
       await DatabaseHelper.removeFromFavorites(movie.toJson());
     }
 
-    movieList.refresh();  // Refresh the UI
+    movieList.refresh(); // Refresh the UI
   }
 }

@@ -32,8 +32,10 @@ class FavouriteViews extends StatelessWidget {
 
               return Padding(
                 padding: const EdgeInsets.all(8.0),
-                child: Material(  // Add Material widget here
-                  color: Colors.transparent,  // Set the background color to transparent
+                child: Material(
+                  // Add Material widget here
+                  color: Colors
+                      .transparent, // Set the background color to transparent
                   child: InkWell(
                     onTap: () {
                       Get.to(MovieDetailsViews(), arguments: movie);
@@ -52,17 +54,18 @@ class FavouriteViews extends StatelessWidget {
                             width: double.infinity,
                             child: movie.posterUrl != null
                                 ? Image.network(
-                              movie.posterUrl!,
-                              fit: BoxFit.fill,
-                            )
+                                    movie.posterUrl!,
+                                    fit: BoxFit.fill,
+                                  )
                                 : Icon(
-                              Icons.broken_image,
-                              size: 50,
-                              color: Colors.white,
-                            ),
+                                    Icons.broken_image,
+                                    size: 50,
+                                    color: Colors.white,
+                                  ),
                           ),
                           Padding(
-                            padding: const EdgeInsets.symmetric(horizontal: 8.0),
+                            padding:
+                                const EdgeInsets.symmetric(horizontal: 8.0),
                             child: Row(
                               mainAxisAlignment: MainAxisAlignment.spaceBetween,
                               children: [
@@ -73,7 +76,7 @@ class FavouriteViews extends StatelessWidget {
                                     fontWeight: FontWeight.bold,
                                   ),
                                 ),
-                                Icon(Icons.favorite, color: Colors.red),
+                                //    Icon(Icons.favorite, color: Colors.red),
                               ],
                             ),
                           ),

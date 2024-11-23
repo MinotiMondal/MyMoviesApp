@@ -16,8 +16,12 @@ class HomeViews extends GetView<HomeController> {
       return Scaffold(
         appBar: AppBar(
           title: TextFormField(
-            //   controller: controller.searchController,
-            onChanged: (String s) {},
+            controller: controller.searchController,
+            onChanged: (String s) {
+              print("1111111111111$s");
+              controller.searchController.text = s;
+              controller.searchProduct(s);
+            },
             decoration: InputDecoration(
               contentPadding:
                   EdgeInsets.only(left: Get.width * .05, top: Get.height * .01),
@@ -50,7 +54,7 @@ class HomeViews extends GetView<HomeController> {
           actions: [
             IconButton(
                 onPressed: () {
-                  Get.to(()=>FavouriteViews());
+                  Get.to(() => FavouriteViews());
                 },
                 icon: Icon(Icons.favorite_border))
           ],
@@ -64,9 +68,9 @@ class HomeViews extends GetView<HomeController> {
                   padding: const EdgeInsets.all(8.0),
                   child: InkWell(
                     onTap: () {
-
-                      Get.to(MovieDetailsViews(), arguments: controller.homeServiceProvider.movieList[index]);
-
+                      Get.to(MovieDetailsViews(),
+                          arguments:
+                              controller.homeServiceProvider.movieList[index]);
                     },
                     child: Container(
                       width: double.infinity,
