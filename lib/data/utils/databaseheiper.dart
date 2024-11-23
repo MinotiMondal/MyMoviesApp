@@ -45,6 +45,7 @@ class DatabaseHelper {
 
     // Convert the 'isFavorite' value to 1 for true, 0 for false
     movie['isFavorite'] = movie['isFavorite'] == true ? 1 : 0;
+  print("Db-1111111${movie.toString()}");
 
     await db.insert(
       'movies',

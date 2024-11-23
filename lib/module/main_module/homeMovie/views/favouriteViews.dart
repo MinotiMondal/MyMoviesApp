@@ -24,6 +24,8 @@ class FavouriteViews extends StatelessWidget {
         if (snapshot.hasData && snapshot.data!.isNotEmpty) {
           final favoriteMovies = snapshot.data!;
           print('Favorite Movies Count: ${favoriteMovies.length}');
+          print('Favorite Movies Count2: ${favoriteMovies[0].posterUrl}');
+          print("uuuuu${favoriteMovies.runtimeType}");
 
           return ListView.builder(
             itemCount: favoriteMovies.length,
