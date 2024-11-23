@@ -29,6 +29,9 @@ class FavouriteViews extends StatelessWidget {
             itemCount: favoriteMovies.length,
             itemBuilder: (BuildContext context, int index) {
               final movie = favoriteMovies[index];
+              print("123456${movie.posterUrl}");
+              print("1111111${movie.title}");
+              print("22222${movie.imdbId}");
 
               return Padding(
                 padding: const EdgeInsets.all(8.0),
@@ -52,16 +55,11 @@ class FavouriteViews extends StatelessWidget {
                           Container(
                             height: 130,
                             width: double.infinity,
-                            child: movie.posterUrl != null
-                                ? Image.network(
-                                    movie.posterUrl!,
+                            child: Image.network(
+                                    movie.posterUrl??"",
                                     fit: BoxFit.fill,
                                   )
-                                : Icon(
-                                    Icons.broken_image,
-                                    size: 50,
-                                    color: Colors.white,
-                                  ),
+
                           ),
                           Padding(
                             padding:

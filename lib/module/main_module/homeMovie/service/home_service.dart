@@ -38,24 +38,5 @@ class HomeServiceProvider extends GetConnect implements GetxService {
     }
   }
 
-  Future<dynamic>searchMovie(String searchtext) async {
-    final Response response = await get("${ApiManager.movieUrl}?title=$searchtext");
 
-    if (response.statusCode == 200) {
-       var checkResponse= json.decode(response.bodyString.toString());
-        if(checkResponse is List){
-          movieList.value = checkResponse.map((movie)=>MoviesResponseModel.fromJson(movie)).toList();
-        }
-    }
-  }
-  void searchMovies(String query) {
-    if (query.isEmpty) {
-      filteredMovies.assignAll(movieList); // Show all movies if query is empty
-    } else {
-      filteredMovies.assignAll(
-        movieList.where((movie) =>
-            movie.title!.toLowerCase().contains(query.toLowerCase())).toList(),
-      );
-    }
-  }
 }

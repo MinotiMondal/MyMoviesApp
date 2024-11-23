@@ -30,7 +30,7 @@ class DatabaseHelper {
           CREATE TABLE movies(
             id INTEGER PRIMARY KEY,
             title TEXT,
-            posterUrl TEXT,
+            posterURL TEXT,
             imdbId TEXT,
             isFavorite INTEGER
           )
