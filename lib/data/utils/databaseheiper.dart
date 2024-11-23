@@ -87,9 +87,11 @@ class DatabaseHelper {
     final db = await _db;
     final List<Map<String, dynamic>> maps = await db.query('movies', where: 'isFavorite = 1');
 
-    // Convert Map data to MoviesResponseModel objects
+    print('Fetched Favorite Movies: $maps');
+
     return List.generate(maps.length, (i) {
       return MoviesResponseModel.fromJson(maps[i]);
     });
   }
+
 }

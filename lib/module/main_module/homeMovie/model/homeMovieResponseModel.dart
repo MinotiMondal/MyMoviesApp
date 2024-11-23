@@ -22,7 +22,7 @@ class MoviesResponseModel {
       title: json["title"],
       posterUrl: json["posterURL"],
       imdbId: json["imdbId"],
-      isFavorite: json["isFavorite"] ?? false,
+      isFavorite: json['isFavorite'] == 1,  // Convert integer to bool
     );
   }
 

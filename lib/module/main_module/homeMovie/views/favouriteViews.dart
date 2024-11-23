@@ -1,4 +1,3 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:my_movies_app/data/utils/databaseheiper.dart';
@@ -10,24 +9,31 @@ class FavouriteViews extends StatelessWidget {
   Widget build(BuildContext context) {
     return FutureBuilder<List<MoviesResponseModel>>(
       future: DatabaseHelper.getFavorites(), // Directly call static method
-        builder: (context, snapshot) {
-          print('Snapshot Connection State: ${snapshot.connectionState}');
-          print('Snapshot Data: ${snapshot.data}');
-          if (snapshot.hasError) {
-            print('Error: ${snapshot.error}');
-          }
-          if (snapshot.connectionState == ConnectionState.waiting) {
-            return Center(child: CircularProgressIndicator());
-          }
-          if (snapshot.hasData && snapshot.data!.isNotEmpty) {
-            final favoriteMovies = snapshot.data!;
-            print('Favorite Movies Count: ${favoriteMovies.length}');
-            return ListView.builder(
-              itemCount: favoriteMovies.length,
-              itemBuilder: (BuildContext context, int index) {
-                final movie = favoriteMovies[index];
-                return Padding(
-                  padding: const EdgeInsets.all(8.0),
+      builder: (context, snapshot) {
+        print('Snapshot Connection State: ${snapshot.connectionState}');
+        print('Snapshot Data: ${snapshot.data}');
+
+        if (snapshot.hasError) {
+          print('Error: ${snapshot.error}');
+        }
+
+        if (snapshot.connectionState == ConnectionState.waiting) {
+          return Center(child: CircularProgressIndicator());
+        }
+
+        if (snapshot.hasData && snapshot.data!.isNotEmpty) {
+          final favoriteMovies = snapshot.data!;
+          print('Favorite Movies Count: ${favoriteMovies.length}');
+
+          return ListView.builder(
+            itemCount: favoriteMovies.length,
+            itemBuilder: (BuildContext context, int index) {
+              final movie = favoriteMovies[index];
+
+              return Padding(
+                padding: const EdgeInsets.all(8.0),
+                child: Material(  // Add Material widget here
+                  color: Colors.transparent,  // Set the background color to transparent
                   child: InkWell(
                     onTap: () {
                       Get.to(MovieDetailsViews(), arguments: movie);
@@ -75,18 +81,19 @@ class FavouriteViews extends StatelessWidget {
                       ),
                     ),
                   ),
-                );
-              },
-            );
-          } else {
-            return Center(
-              child: Text(
-                'No favorites found.',
-                style: TextStyle(fontSize: 18, color: Colors.grey),
-              ),
-            );
-          }
+                ),
+              );
+            },
+          );
+        } else {
+          return Center(
+            child: Text(
+              'No favorites found.',
+              style: TextStyle(fontSize: 18, color: Colors.grey),
+            ),
+          );
         }
+      },
     );
   }
 }
