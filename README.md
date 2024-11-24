@@ -5,7 +5,7 @@ This Flutter application demonstrates a movie list with individual  details for 
 ---
 
 ## Architectural Choices
-
+ 
 ### State Management
 - **`GetX`**:
     - Handles reactive state management, dependency injection, and routing.
@@ -15,17 +15,13 @@ This Flutter application demonstrates a movie list with individual  details for 
 - Divided into controllers and views for better separation of concerns:
     - **`MovieListView`**: Displays the list of Movie.
     - **`MovieDetailView`**: Shows detailed information about a selected Movie.
-    - **`FavouriteList`**: Manages individual post timers, ensuring that timers work independently.
+    - **`FavouriteList`**: From movie details favourite icon click it will go to Favourite lidt screen (Sqflite database)
 
-### Timer Management
-- The timer system ensures:
-    - Each post has its own timer.
-    - Only the timer for the clicked post pauses, while others continue running.
-    - Timers resume when the user navigates back to the list.
 
 ---
 
 ## Third-Party Libraries
+
 
 1. **`http`**
     - Handles API requests for fetching post data.
@@ -43,7 +39,7 @@ This Flutter application demonstrates a movie list with individual  details for 
 
 ### Prerequisites
 - Flutter SDK (latest stable version)
-- Android Studio, VS Code, or any preferred IDE
+- Android Studio, VS Code, Xocode or any preferred IDE
 - An emulator or a physical device for testing
 
 ### Setup
@@ -60,18 +56,15 @@ This Flutter application demonstrates a movie list with individual  details for 
 
 ## Application Features
 
-### Post List:
+### Movie List:
 - Displays a list of posts, each with its own independent timer.
 - When a post is clicked, its timer pauses, while the timers for other posts continue running.
 - When navigating back to the post list, the paused timer for the clicked post resumes from where it left off.
 
-### Post Details:
+### Mocie Details:
 - Shows the detailed view of a selected post.
 - The timer for the post pauses when the user clicks on it and resumes correctly when navigating back, ensuring the timer state is preserved across screens.
 
-### Independent Timers:
-- Each post has a dedicated timer.
-- Only the timer of the clicked post pauses, while other timers continue running in the background.
 
 ## Directory Structure
 
@@ -84,13 +77,10 @@ lib/
 
 
 
-|          |______post_controller.dart
+|          |_______movieController.dart
 
 
-|          |
 
-
-|          |______timer_controller.dart
 
 
 
