@@ -15,7 +15,7 @@ This Flutter application demonstrates a movie list with individual  details for 
 - Divided into controllers and views for better separation of concerns:
     - **`MovieListView`**: Displays the list of Movie.
     - **`MovieDetailView`**: Shows detailed information about a selected Movie.
-    - **`FavouriteList`**: From movie details favourite icon click it will go to Favourite lidt screen (Sqflite database)
+    - **`FavouriteList`**: From movie details click on favourite icon it will go to Favourite  screen (Sqflite database)
 
 
 ---
@@ -29,9 +29,6 @@ This Flutter application demonstrates a movie list with individual  details for 
 2. **`get`**
     - Provides state management, dependency injection, and navigation.
     - Simplifies app development by offering a single, unified approach.
-
-3. **`visibility_detector`**
-    - Monitors the visibility of list items (posts) to start or pause timers dynamically based on visibility.
 
 ---
 
@@ -61,9 +58,6 @@ This Flutter application demonstrates a movie list with individual  details for 
 - When a post is clicked, its timer pauses, while the timers for other posts continue running.
 - When navigating back to the post list, the paused timer for the clicked post resumes from where it left off.
 
-### Mocie Details:
-- Shows the detailed view of a selected post.
-- The timer for the post pauses when the user clicks on it and resumes correctly when navigating back, ensuring the timer state is preserved across screens.
 
 
 ## Directory Structure
@@ -85,13 +79,14 @@ lib/
 
 
 
-|________views
+|________movieViews.dart
 
 
-|           |______post_list_vie
+|           |______movie_views.dart
 
+|           |______movie_detail_view.dart
 
-|           |______post_detail_view.dart
+|           |______favourite_views.dart
 
 
 |________main.dart          
