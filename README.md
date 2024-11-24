@@ -64,6 +64,12 @@ This Flutter application demonstrates a movie list with individual  details for 
 
 lib/
 
+|______bindings
+
+
+
+|           |______mvieBindings.dart
+
 
 |______controllers
 
