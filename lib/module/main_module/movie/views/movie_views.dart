@@ -4,9 +4,9 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:my_movies_app/data/utils/colour_manager.dart';
-import 'package:my_movies_app/module/main_module/homeMovie/views/favouriteViews.dart';
-import 'package:my_movies_app/module/main_module/homeMovie/controller/home_controller.dart';
-import 'package:my_movies_app/module/main_module/homeMovie/views/movies_detailsviews.dart';
+import 'package:my_movies_app/module/main_module/movie/controller/movie_controller.dart';
+import 'package:my_movies_app/module/main_module/movie/views/favouriteViews.dart';
+import 'package:my_movies_app/module/main_module/movie/views/movies_detailsviews.dart';
 import 'package:my_movies_app/module/routes/app_pages.dart';
 
 class HomeViews extends GetView<HomeController> {
@@ -32,7 +32,7 @@ class HomeViews extends GetView<HomeController> {
                   borderRadius: BorderRadius.circular(8),
                   borderSide: BorderSide(
                       color: Theme.of(context).splashColor, width: 1)),
-              hintText: 'Search by product name',
+              hintText: 'Search by movie name',
               border: OutlineInputBorder(),
               suffixIcon: Padding(
                 padding: const EdgeInsets.all(4.0),
@@ -76,7 +76,7 @@ class HomeViews extends GetView<HomeController> {
                       width: double.infinity,
                       height: Get.height * .20,
                       decoration: BoxDecoration(
-                        color: Colors.pinkAccent,
+                        color: Colors.pinkAccent[100],
                         borderRadius: BorderRadius.circular(10),
                       ),
                       child: Column(

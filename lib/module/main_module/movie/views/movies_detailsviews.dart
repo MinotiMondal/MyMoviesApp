@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:my_movies_app/module/main_module/homeMovie/controller/home_controller.dart';
+import 'package:my_movies_app/module/main_module/movie/controller/movie_controller.dart';
 
 class MovieDetailsViews extends GetView<HomeController> {
   @override
@@ -9,7 +9,7 @@ class MovieDetailsViews extends GetView<HomeController> {
 
     return Scaffold(
       appBar: AppBar(
-        title: Text("Movie Name"),
+        title: Text("Movie Details"),
       ),
       body: SingleChildScrollView(
         child: Column(
@@ -21,7 +21,7 @@ class MovieDetailsViews extends GetView<HomeController> {
                 width: double.infinity,
                 height: Get.height * .20,
                 decoration: BoxDecoration(
-                  color: Colors.pinkAccent,
+                  color: Colors.pinkAccent[100],
                   borderRadius: BorderRadius.circular(10),
                 ),
                 child: Column(

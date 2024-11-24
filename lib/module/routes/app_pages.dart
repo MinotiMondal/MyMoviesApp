@@ -1,8 +1,8 @@
 import 'package:get/get.dart';
-import 'package:my_movies_app/module/main_module/homeMovie/views/favouriteViews.dart';
-import 'package:my_movies_app/module/main_module/homeMovie/bindings/home_bindings.dart';
-import 'package:my_movies_app/module/main_module/homeMovie/views/home_views.dart';
-import 'package:my_movies_app/module/main_module/homeMovie/views/movies_detailsviews.dart';
+import 'package:my_movies_app/module/main_module/movie/bindings/movie_bindings.dart';
+import 'package:my_movies_app/module/main_module/movie/views/favouriteViews.dart';
+import 'package:my_movies_app/module/main_module/movie/views/movie_views.dart';
+import 'package:my_movies_app/module/main_module/movie/views/movies_detailsviews.dart';
 import 'package:my_movies_app/module/misc_module/splash/bindings/splash_bindings.dart';
 import 'package:my_movies_app/module/misc_module/splash/views/splash_views.dart';
 
@@ -25,9 +25,9 @@ class AppPages {
         name: _Paths.MOVIEDETAILSVIEW,
         page: () => MovieDetailsViews(),
         binding: HomeBindings()),
-    // GetPage(
-    //     name: _Paths.FAVOURITEMOVIE,
-    //     page: () => FavouriteViews(),
-    //     binding: HomeBindings()),
+    GetPage(
+        name: _Paths.FAVOURITEMOVIE,
+        page: () => FavouriteViews(),
+        binding: HomeBindings()),
   ];
 }

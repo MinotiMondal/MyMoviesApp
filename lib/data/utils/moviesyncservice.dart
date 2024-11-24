@@ -1,6 +1,6 @@
 import 'package:connectivity_plus/connectivity_plus.dart';
 import 'package:my_movies_app/data/utils/databaseheiper.dart';
-import 'package:my_movies_app/module/main_module/homeMovie/model/homeMovieResponseModel.dart';
+import 'package:my_movies_app/module/main_module/movie/model/MovieResponseModel.dart';
 
 class MovieSyncService {
   // Method to check internet connectivity and sync data

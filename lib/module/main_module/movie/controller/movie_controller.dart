@@ -6,9 +6,9 @@ import 'package:my_movies_app/data/utils/api_manager.dart';
 import 'package:my_movies_app/data/utils/connectivityplus.dart';
 import 'package:my_movies_app/data/utils/databaseheiper.dart';
 import 'package:my_movies_app/data/utils/moviesyncservice.dart';
-import 'package:my_movies_app/module/main_module/homeMovie/model/homeMovieResponseModel.dart';
-import 'package:my_movies_app/module/main_module/homeMovie/service/home_service.dart';
 import 'package:http/http.dart' as http;
+import 'package:my_movies_app/module/main_module/movie/model/MovieResponseModel.dart';
+import 'package:my_movies_app/module/main_module/movie/service/movie_service.dart';
 
 class HomeController extends GetxController {
   late HomeServiceProvider homeServiceProvider = Get.put(HomeServiceProvider());

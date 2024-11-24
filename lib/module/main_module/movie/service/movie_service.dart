@@ -4,7 +4,7 @@ import 'dart:io';
 import 'package:get/get.dart';
 import 'package:internet_connection_checker/internet_connection_checker.dart';
 import 'package:my_movies_app/data/utils/api_manager.dart';
-import 'package:my_movies_app/module/main_module/homeMovie/model/homeMovieResponseModel.dart';
+import 'package:my_movies_app/module/main_module/movie/model/MovieResponseModel.dart';
 
 class HomeServiceProvider extends GetConnect implements GetxService {
   RxList<MoviesResponseModel> movieList = <MoviesResponseModel>[].obs;

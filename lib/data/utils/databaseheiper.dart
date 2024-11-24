@@ -1,6 +1,7 @@
 import 'package:sqflite/sqflite.dart';
 import 'package:path/path.dart';
-import 'package:my_movies_app/module/main_module/homeMovie/model/homeMovieResponseModel.dart';
+
+import '../../module/main_module/movie/model/MovieResponseModel.dart';
 
 class DatabaseHelper {
   static Database? _database;

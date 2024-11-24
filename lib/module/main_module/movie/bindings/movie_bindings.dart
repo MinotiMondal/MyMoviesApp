@@ -1,6 +1,6 @@
 import 'package:get/get.dart';
-import 'package:my_movies_app/module/main_module/homeMovie/controller/home_controller.dart';
-import 'package:my_movies_app/module/main_module/homeMovie/views/movies_detailsviews.dart';
+import 'package:my_movies_app/module/main_module/movie/controller/movie_controller.dart';
+import 'package:my_movies_app/module/main_module/movie/views/movies_detailsviews.dart';
 
 class HomeBindings extends Bindings{
   @override
