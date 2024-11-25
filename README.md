@@ -68,7 +68,7 @@ lib/
 
 
 
-|           |______mvieBindings.dart
+|           |______movieBindings.dart
 
 
 |______controllers
