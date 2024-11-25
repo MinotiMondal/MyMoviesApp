@@ -1,6 +1,6 @@
 # My Movies Application
 
-This Flutter application demonstrates a movie list with individual  details for each movie. 
+This Flutter application demonstrates a movie list with individual  details for each movie. Easily explore, discover, and save your favorite movies with MyMovies! Featuring a rich movie database, personalized favorites, offline access, and a sleek search functionality.
 
 ---
 
